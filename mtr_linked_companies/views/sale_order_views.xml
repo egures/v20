@@ -5,7 +5,7 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_sales_order_filter"/>
         <field name="arch" type="xml">
-            <xpath expr="//group[@name='group_by']" position="inside">
+            <xpath expr="//filter[@name='customer']" position="after">
                 <filter name="group_company" string="Group Company"
                         context="{'group_by': 'group_company_id'}"/>
             </xpath>
