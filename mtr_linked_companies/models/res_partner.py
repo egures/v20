@@ -106,7 +106,7 @@ class ResPartner(models.Model):
             partner._write(write_vals)
             partner.invalidate_recordset(['parent_id', 'type'])
             partner._check_parent_id()
-        self._check_company('parent_id')
+        self._check_company(['parent_id'])
 
     # --- Actions ---
     def action_view_linked_companies(self):
