@@ -1,0 +1,77 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mtr_linked_companies
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-12 00:00+0000\n"
+"PO-Revision-Date: 2026-11-12 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: tr\n"
+"X-Source-Language: \n"
+
+#. module: mtr_linked_companies
+#: model:ir.model.fields,field_description:mtr_linked_companies.field_res_partner__is_linked_company
+msgid "Independent Company"
+msgstr "Bağımsız Şirket"
+
+#. module: mtr_linked_companies
+#: model:ir.model.fields,field_description:mtr_linked_companies.field_res_partner__linked_company_count
+#: model_terms:ir.ui.view,arch_db:mtr_linked_companies.view_partner_form_mtr_linked
+#: model_terms:ir.ui.view,arch_db:mtr_linked_companies.view_res_partner_filter_mtr_linked
+msgid "Linked Companies"
+msgstr "Bağlı Şirketler"
+
+#. module: mtr_linked_companies
+#: model:ir.model.fields,field_description:mtr_linked_companies.field_account_move__group_company_id
+#: model:ir.model.fields,field_description:mtr_linked_companies.field_sale_order__group_company_id
+#: model_terms:ir.ui.view,arch_db:mtr_linked_companies.view_account_invoice_filter_mtr_linked
+#: model_terms:ir.ui.view,arch_db:mtr_linked_companies.view_sales_order_filter_mtr_linked
+msgid "Group Company"
+msgstr "Grup Şirketi"
+
+#. module: mtr_linked_companies
+#: model_terms:ir.ui.view,arch_db:mtr_linked_companies.view_partner_form_mtr_linked
+msgid "Company Group"
+msgstr "Şirket Grubu"
+
+#. module: mtr_linked_companies
+#: model:ir.model.fields,help:mtr_linked_companies.field_res_partner__is_linked_company
+msgid ""
+"A linked company keeps its own commercial entity under a parent company: "
+"its Tax ID, receivable/payable accounts, payment terms and journal entries "
+"are never synchronized with the parent. Standard smart buttons on the "
+"parent still aggregate its documents (child_of hierarchy)."
+msgstr ""
+"Bağlı bir şirket, ana şirketin altında kendi bağımsız carisini korur: "
+"vergi numarası, alacak/borç hesapları, ödeme vadeleri ve yevmiye kayıtları "
+"ana şirketle asla senkronize edilmez. Ana şirketin standart smart "
+"butonları ise yine de bu şirketin belgelerini toplar."
+
+#. module: mtr_linked_companies
+#. odoo-python
+#: code:addons/mtr_linked_companies/models/res_partner.py:0
+msgid ""
+"The \"Independent Company\" flag cannot be removed while the partner is "
+"still linked to %(parents)s. Remove the parent company first."
+msgstr ""
+"\"Bağımsız Şirket\" işareti, kayıt hâlâ %(parents)s şirketine bağlıyken "
+"kaldırılamaz. Önce ana şirket bağını kaldırın."
+
+#. module: mtr_linked_companies
+#. odoo-python
+#: code:addons/mtr_linked_companies/models/res_partner.py:0
+msgid "The selected parent company does not exist."
+msgstr "Seçilen ana şirket mevcut değil."
+
+#. module: mtr_linked_companies
+#: model:ir.model.fields,field_description:mtr_linked_companies.field_sale_order__group_company_id
+msgid "Parent (group) company of the customer, for consolidated reporting."
+msgstr "Konsolide raporlama için müşterinin bağlı olduğu ana (grup) şirketi."
