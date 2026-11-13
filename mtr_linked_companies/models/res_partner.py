@@ -103,8 +103,15 @@ class ResPartner(models.Model):
             if partner.type == 'contact':
                 # 'other' exempts the record from both directions of address sync
                 write_vals['type'] = 'other'
+            # _write() skips modified(); mirror write() so dependents on the
+            # parent chain (stored related group_company_id, commercial
+            # partner, parent_path...) get invalidated and recomputed
+            rel_fnames = [f for f in write_vals if partner._fields[f].relational]
+            if rel_fnames:
+                partner.modified(rel_fnames, before=True)
             partner._write(write_vals)
-            partner.invalidate_recordset(['parent_id', 'type'])
+            partner.invalidate_recordset(list(write_vals))
+            partner.modified(list(write_vals))
             partner._check_parent_id()
         self._check_company(['parent_id'])
 
