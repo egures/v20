@@ -52,6 +52,14 @@ class ResPartner(models.Model):
         if dependent:
             super(ResPartner, dependent)._write_commercial_sync(sync_vals)
 
+    def _get_complete_name(self):
+        if self.is_linked_company:
+            # without a Tax ID is_company stays False, and the core would
+            # prefix the name with commercial_company_name -- which is the
+            # record itself, doubling the name ("test1, test1")
+            return (self.name or '').strip()
+        return super()._get_complete_name()
+
     @api.onchange('parent_id')
     def onchange_parent_id(self):
         if self.is_linked_company:
