@@ -7,7 +7,7 @@
 # in the root of this repository.
 {
     'name': 'MTR Vessel Sales',
-    'version': '19.0.1.0.0',
+    'version': '20.0.1.0.0',
     'summary': 'Master quotation to per-vessel sale orders for maritime customers',
     'description': """
 Allows preparing a single Master Quotation for a management company and
