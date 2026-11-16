@@ -18,6 +18,8 @@ class ResPartner(models.Model):
         help='This partner is a vessel. Its parent company is the legal entity '
              'that gets invoiced for vessel orders.')
     imo_number = fields.Char('IMO Number', copy=False, index=True)
+    vessel_name = fields.Char('Vessel Name', copy=False, index=True,
+                              help='Registered name of the vessel, shown under the IMO number.')
     flag_id = fields.Many2one('res.country', 'Flag')
     vessel_management_id = fields.Many2one(
         'res.partner', 'Management Company', index=True, copy=False,

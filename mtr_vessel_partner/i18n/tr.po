@@ -27,6 +27,11 @@ msgid "IMO Number"
 msgstr "IMO Numarası"
 
 #. module: mtr_vessel_partner
+#: model:ir.model.fields,field_description:mtr_vessel_partner.field_res_partner__vessel_name
+msgid "Vessel Name"
+msgstr "Gemi Adı"
+
+#. module: mtr_vessel_partner
 #: model:ir.model.fields,field_description:mtr_vessel_partner.field_res_partner__flag_id
 msgid "Flag"
 msgstr "Bayrak"

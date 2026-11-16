@@ -23,6 +23,7 @@
                 <group string="Vessel" name="mtr_vessel">
                     <field name="is_vessel"/>
                     <field name="imo_number" invisible="not is_vessel"/>
+                    <field name="vessel_name" invisible="not is_vessel"/>
                     <field name="flag_id" invisible="not is_vessel"/>
                     <field name="vessel_management_id" invisible="not is_vessel"
                            options="{'no_create': True}"/>
