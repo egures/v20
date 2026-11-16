@@ -7,7 +7,7 @@
 # in the root of this repository.
 {
     'name': 'MTR Vessel Sales',
-    'version': '20.0.1.0.0',
+    'version': '19.0.1.0.0',
     'summary': 'Master quotation to per-vessel sale orders for maritime customers',
     'description': """
 Allows preparing a single Master Quotation for a management company and
@@ -33,7 +33,7 @@ entity, while keeping full traceability back to the master quotation.
     'depends': ['sale_management', 'project'],
 
     'data': [
-        'security/ir.access.csv',
+        'security/ir.model.access.csv',
 
         'views/res_partner_views.xml',
         'views/sale_order_views.xml',

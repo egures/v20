@@ -7,15 +7,14 @@
 # in the root of this repository.
 
 from odoo import models
-from odoo.fields import Domain
 
 
 class SaleReport(models.Model):
     _inherit = 'sale.report'
 
-    def _order_line_domain(self):
+    def _where_sale(self):
         # Master quotations are commercial umbrella documents: their value is
         # carried by the generated vessel quotations, so they must not be
         # counted again in sales analysis.
-        return super()._order_line_domain() & Domain(
-            'order_id.is_master_quotation', '!=', True)
+        return super()._where_sale() + """
+            AND COALESCE(s.is_master_quotation, FALSE) IS NOT TRUE"""

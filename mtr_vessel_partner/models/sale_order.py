@@ -56,7 +56,7 @@ class SaleOrder(models.Model):
         # When a vessel is picked manually on the order, its legal entity
         # (the vessel's parent company) becomes the invoicing customer.
         if self.vessel_id and not self.is_master_quotation:
-            self.partner_id = self.vessel_id.parent_id or self.vessel_id
+            self.partner_id = self.vessel_id.commercial_partner_id or self.vessel_id
 
     # --- Actions ---
     def action_confirm(self):
@@ -149,9 +149,11 @@ class SaleOrder(models.Model):
             else:
                 order_lines.append(Command.create(self._prepare_vessel_order_line_vals(line)))
         vals = {
-            # The order is invoiced to the vessel's legal entity: the vessel's
-            # parent company when set, otherwise the vessel partner itself.
-            'partner_id': (vessel.parent_id or vessel).id,
+            # The order is invoiced to the vessel's commercial entity: the
+            # parent's commercial partner for regular children, the vessel
+            # itself for linked companies (mtr_linked_companies) that keep
+            # their own commercial identity.
+            'partner_id': (vessel.commercial_partner_id or vessel).id,
             'pricelist_id': self.pricelist_id.id,
             'currency_id': self.currency_id.id,
             'payment_term_id': self.payment_term_id.id,
@@ -188,8 +190,8 @@ class SaleOrder(models.Model):
         })
         if amount is not None:
             vals['master_line_id'] = line.id
-        if line.tax_ids:
-            vals['tax_ids'] = [Command.set(line.tax_ids.ids)]
+        if 'tax_id' in line._fields and line.tax_id:
+            vals['tax_id'] = [Command.set(line.tax_id.ids)]
         if 'analytic_distribution' in line._fields and line.analytic_distribution:
             vals['analytic_distribution'] = line.analytic_distribution
         return vals
